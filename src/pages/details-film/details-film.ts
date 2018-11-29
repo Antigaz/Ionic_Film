@@ -26,11 +26,11 @@ export class ItemDetailsPage {
   //   this.callApiProvider.getListItems(this.navParams.get('movie').imdbID).subscribe(movie)
   // }
 
-  loadDataDetails(){
-    this.callApiProvider.load().subscribe(result => {
-      console.log(result);
-      this.data = result
-    });
+  // loadDataDetails(){
+  //   this.callApiProvider.load(search).subscribe(result => {
+  //     console.log(result);
+  //     this.data = result
+  //   });
     
-  }
+  // }
 }

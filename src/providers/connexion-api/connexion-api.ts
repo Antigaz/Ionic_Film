@@ -27,9 +27,8 @@ export class CallApiProvider {
     return this.items;
   }
 
-  load() {
-
-    return this.http.get('http://www.omdbapi.com/?s=batman&apikey=551f90f9').pipe(
+  load(movieTitle) {
+    return this.http.get('http://www.omdbapi.com/?s='+ movieTitle +'&apikey=551f90f9').pipe(
       map(results => results['Search'])
     );
   }

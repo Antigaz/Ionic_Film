@@ -1,32 +1,25 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title></ion-title>
-    <!-- <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="searchMovies()"></ion-searchbar> -->
+    <ion-navbar color="primary">
+      <button *ngIf="!toggled" ion-button icon-only menuToggle><ion-icon name="menu"></ion-icon></button>
+      <!-- Title -->
+      <ion-title *ngIf="!toggled">Films</ion-title>
+    <ion-searchbar *ngIf="toggled" [(ngModel)]="searchTerm" [showCancelButton]="true" (ionCancel)="toggleSearch()" (ionInput)="initializeItems()"></ion-searchbar>
+    <!-- Search Icon -->    
+    <ion-buttons end *ngIf="!toggled">
+      <button ion-button icon-only (click)="toggleSearch()"><ion-icon name="search"></ion-icon></button>
+    </ion-buttons>   
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding class="home">
-
-  <h2>FILM SEARCH</h2>
-
-  <p *ngIf="position">
-    {{position.coords.latitude}}
-    {{position.coords.longitude}}
-  </p>
-  <div >
-    <ion-grid>
-      <ion-row>
-        <ion-col *ngFor="let d of data" col-xl-2 col-md-12 class="film" (click)="itemTapped($event, d)">
+<ion-content class="card-background-page grid">
+  <ion-row>
+    <ion-col col-12 col-md-3 *ngFor="let d of data">
+        <ion-card (click)="itemTapped($event, d)">
             <img src="{{d.Poster}}" alt="">
-            <h1>{{d.Title}}</h1>
-            <br>
-            <span>{{d.Year}}</span>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+            <div class="card-title">{{d.Title}}</div>
+            <div class="card-subtitle">{{d.Year}}</div>
+        </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>
