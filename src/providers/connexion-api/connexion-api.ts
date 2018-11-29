@@ -14,21 +14,26 @@ import { map } from 'rxjs/operators';
 export class CallApiProvider {
 
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  items: Array<{ title: string, note: string, icon: string }>;
   url;
   apiKey: '551f90f9';
 
-  constructor(public http: HttpClient)
-  {
-    
+  constructor(public http: HttpClient) {
+
   }
 
-  getListItems(){
+  getListItems() {
     return this.items;
   }
 
   load(movieTitle) {
-    return this.http.get('http://www.omdbapi.com/?s='+ movieTitle +'&apikey=551f90f9').pipe(
+    return this.http.get('http://www.omdbapi.com/?s=' + movieTitle + '&apikey=551f90f9' + '&Type=movie').pipe(
+      map(results => results['Search'])
+    );
+  }
+
+  loadSerie(serieTitle) {
+    return this.http.get('http://www.omdbapi.com/?s=' + serieTitle + '&apikey=551f90f9' + '&Type=series').pipe(
       map(results => results['Search'])
     );
   }
@@ -43,7 +48,7 @@ export class CallApiProvider {
     );
   }
 
-  searchMovies(imdbID){
+  searchMovies(imdbID) {
     this.url = 'http://www.omdbapi.com/?apikey=551f90f9&i=' + imdbID;
     return this.http.get(this.url).pipe(
       map(results => {
@@ -52,5 +57,5 @@ export class CallApiProvider {
       })
     );
   }
-  
+
 }

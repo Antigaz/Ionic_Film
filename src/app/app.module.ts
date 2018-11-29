@@ -3,19 +3,25 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { HelloIonicPage } from '../pages/home/home';
+import { Film } from '../pages/home/home';
 import { ItemDetailsPage } from '../pages/details-film/details-film';
+import { Serie } from '../pages/serie/serie';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CallApiProvider } from '../providers/connexion-api/connexion-api';
 import { HttpClientModule } from '@angular/common/http';
+import { TabsPage } from '../pages/tabs/tabs';
+import { FavoritePage } from '../pages/favorite/favorite';
 
 @NgModule({
   declarations: [
     MyApp,
-    HelloIonicPage,
-    ItemDetailsPage
+    Film,
+    ItemDetailsPage,
+    Serie, 
+    TabsPage,
+    FavoritePage
   ],
   imports: [
     BrowserModule,
@@ -25,15 +31,17 @@ import { HttpClientModule } from '@angular/common/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HelloIonicPage,
-    ItemDetailsPage
+    Film,
+    ItemDetailsPage,
+    Serie,
+    TabsPage,
+    FavoritePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CallApiProvider
-    // CallApiProvider
   ]
 })
 export class AppModule {}

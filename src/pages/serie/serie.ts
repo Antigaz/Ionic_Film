@@ -1,34 +1,29 @@
 import { Component } from '@angular/core';
+import { IonicPage, NavController } from 'ionic-angular';
 import { CallApiProvider } from '../../providers/connexion-api/connexion-api';
-import { NavController } from 'ionic-angular';
 import { ItemDetailsPage } from '../details-film/details-film';
 
-@Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
-  providers: [CallApiProvider]
-})
+/**
+ * Generated class for the SeriePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
-export class Film {
+@IonicPage()
+@Component({
+  selector: 'page-serie',
+  templateUrl: 'serie.html',
+})
+export class Serie {
 
   public data: any;
   public position: any;
   searchTerm : any="";
   toggled: boolean;
-  private Film;
-  private FilmPage = this.FilmPage;
-  private Favoris;
 
   constructor(public navCtrl: NavController, public callApiProvider: CallApiProvider){
     this.toggled = false;
-    this.Film = Film;
-    this.Favoris = this.Favoris;
-
-  }
-
-  openPage(p) {
-    this.navCtrl.push(p);
-    console.log(p);
   }
 
   toggleSearch() {
@@ -42,7 +37,7 @@ export class Film {
   }
 
   initializeItems() {
-    this.callApiProvider.load(this.searchTerm).subscribe(result => {
+    this.callApiProvider.loadSerie(this.searchTerm).subscribe(result => {
       this.data = result;
     })
   }
@@ -61,5 +56,4 @@ export class Film {
       })
     }
   }
-  
 }
