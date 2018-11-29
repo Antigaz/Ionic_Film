@@ -1,0 +1,30 @@
+page-details-film {
+    .detailsFilm img {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 30px;
+        color: #5577c1;
+        font-family: 'Ubuntu', sans-serif;
+        text-transform: uppercase;
+        padding: 0 5px;
+    }
+
+    .rating {
+        font-size: 40px;
+        text-align: right
+    }
+
+    .contenuFilm {
+        padding: 10px;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-justify {
+        text-align: justify;
+    }
+}

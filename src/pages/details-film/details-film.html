@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle *ngIf="!selectedItem">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="selectedItem">
+        <ion-grid>
+          <ion-row class="detailsFilm">
+            <ion-col col-12>
+                <img src="{{selectedItem.Poster}}" alt="">
+            </ion-col>
+            <ion-col col-12 class="text-center">
+                <span class="rating">{{selectedItem.imdbRating}}/10</span>
+            </ion-col>
+            <ion-col col-12 class="contenuFilm">
+                <h1>{{selectedItem.Title}}</h1>
+                <p><strong>Genre : </strong>{{selectedItem.Genre}}</p>
+                <p class="text-justify"><strong>Description : </strong>{{selectedItem.Plot}}</p>
+                <p><strong>Date de création : </strong>{{selectedItem.Released}}</p>
+                <p><strong>Directeur : </strong>{{selectedItem.Director}}</p>
+                <p><strong>Production :</strong> {{selectedItem.Production}}</p>
+                <p><strong>Durée : </strong>{{selectedItem.Runtime}}</p>
+                <p><strong>Pegi : </strong>{{selectedItem.Rated}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+</ion-content>

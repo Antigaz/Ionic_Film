@@ -1,3 +1,42 @@
-page-home {
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
+.home ion-col {
+    box-shadow: 0px 0px 1px #000;
+}
+
+.home ion-col:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 15px #000;
+}
+
+.home .film {
+    text-align: center;
+}
+
+.home .film h1 {
+    font-size: 22px;
+    color: #5577c1;
+    font-family: 'Ubuntu', sans-serif;
+    text-transform: uppercase;
+    padding: 0 5px;
+}
+
+.home .film span {
+    font-size: 18px;
+    color: #505050;
+    font-family: 'Ubuntu', sans-serif;
+    text-transform: uppercase;
+    padding: 5px;
+}
+
+.home .film img {
+    height: 200px;
+}
+
+.home [col-2] {
+    padding: 0;
+}
+
+.home ion-searchbar {
+    width: 20%;
 }

@@ -1,14 +1,32 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title></ion-title>
+    <!-- <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="searchMovies()"></ion-searchbar> -->
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
+
+<ion-content padding class="home">
+
+  <h2>FILM SEARCH</h2>
+
+  <p *ngIf="position">
+    {{position.coords.latitude}}
+    {{position.coords.longitude}}
   </p>
+  <div >
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let d of data" col-xl-2 col-md-12 class="film" (click)="itemTapped($event, d)">
+            <img src="{{d.Poster}}" alt="">
+            <h1>{{d.Title}}</h1>
+            <br>
+            <span>{{d.Year}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
