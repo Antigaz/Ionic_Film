@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar>
+      <button menuToggle *ngIf="!selectedItem">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title *ngIf="selectedItem" >{{selectedItem.Title}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+      <div *ngIf="selectedItem">
+          <ion-grid>
+            <ion-row class="detailsFilm">
+              <ion-col col-12>
+                  <img src="{{selectedItem.Poster}}" alt="">
+              </ion-col>
+              <ion-col col-12 class="text-center">
+                  <span class="rating">{{selectedItem.imdbRating}}/10 </span>
+                  <span class="votes">{{selectedItem.imdbVotes}} votes</span>
+              </ion-col>
+              <ion-col col-12 class="contenuFilm">
+                  <h1>{{selectedItem.Title}}</h1>
+                  <p><strong>Genre : </strong>{{selectedItem.Genre}}</p>
+                  <p class="text-justify"><strong>Description : </strong>{{selectedItem.Plot}}</p>
+                  <p><strong>Date de création : </strong>{{selectedItem.Released}}</p>
+                  <p><strong>Directeur : </strong>{{selectedItem.Director}}</p>
+                  <p><strong>Production :</strong> {{selectedItem.Production}}</p>
+                  <p><strong>Durée : </strong>{{selectedItem.Runtime}}</p>
+                  <p><strong>Recommendation : </strong>{{selectedItem.Rated}}</p>
+                  <p><strong>Acteurs : </strong>{{selectedItem.Actors}}</p>
+                  <p><strong>Nomination : </strong>{{selectedItem.Awards}}</p>
+                  <p *ngIf="selectedItem.Website != 'N/A'"><strong>Site web : </strong>{{selectedItem.Website}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-list>
+              <ion-item *ngFor="let saison of saisons; index as i">
+                  <div (click)="saisonTapped(selectedItem.imdbID, i)">
+                      <ion-segment-button>SAISON {{i+1}}</ion-segment-button>
+                  </div>
+              </ion-item>
+          </ion-list>
+        </div>
+        
+  </ion-content>
+  

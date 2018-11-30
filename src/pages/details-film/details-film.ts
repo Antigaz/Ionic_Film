@@ -22,15 +22,4 @@ export class ItemDetailsPage {
     })
   }
 
-  // ionViewDidLoad() {
-  //   this.callApiProvider.getListItems(this.navParams.get('movie').imdbID).subscribe(movie)
-  // }
-
-  // loadDataDetails(){
-  //   this.callApiProvider.load(search).subscribe(result => {
-  //     console.log(result);
-  //     this.data = result
-  //   });
-    
-  // }
 }

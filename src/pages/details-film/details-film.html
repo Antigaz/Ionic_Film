@@ -15,7 +15,8 @@
                 <img src="{{selectedItem.Poster}}" alt="">
             </ion-col>
             <ion-col col-12 class="text-center">
-                <span class="rating">{{selectedItem.imdbRating}}/10</span>
+                <span class="rating">{{selectedItem.imdbRating}}/10 </span>
+                <span class="votes">{{selectedItem.imdbVotes}} votes</span>
             </ion-col>
             <ion-col col-12 class="contenuFilm">
                 <h1>{{selectedItem.Title}}</h1>
@@ -28,6 +29,7 @@
                 <p><strong>Recommendation : </strong>{{selectedItem.Rated}}</p>
                 <p><strong>Acteurs : </strong>{{selectedItem.Actors}}</p>
                 <p><strong>Nomination : </strong>{{selectedItem.Awards}}</p>
+                <p *ngIf="selectedItem.Website != 'N/A'"><strong>Site web : </strong>{{selectedItem.Website}}</p>
             </ion-col>
           </ion-row>
         </ion-grid>

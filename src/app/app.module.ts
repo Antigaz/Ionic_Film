@@ -13,6 +13,9 @@ import { CallApiProvider } from '../providers/connexion-api/connexion-api';
 import { HttpClientModule } from '@angular/common/http';
 import { TabsPage } from '../pages/tabs/tabs';
 import { FavoritePage } from '../pages/favorite/favorite';
+import { DetailsSeriePage } from '../pages/details-serie/details-serie';
+import { DetailsEpisodePage } from '../pages/details-episode/details-episode';
+import { DetailsSaisonPage } from '../pages/details-saison/details-saison';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { FavoritePage } from '../pages/favorite/favorite';
     ItemDetailsPage,
     Serie, 
     TabsPage,
-    FavoritePage
+    FavoritePage,
+    DetailsSeriePage,
+    DetailsEpisodePage,
+    DetailsSaisonPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,10 @@ import { FavoritePage } from '../pages/favorite/favorite';
     ItemDetailsPage,
     Serie,
     TabsPage,
-    FavoritePage
+    FavoritePage,
+    DetailsSeriePage,
+    DetailsEpisodePage,
+    DetailsSaisonPage
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,48 @@
+<!--
+  Generated template for the DetailsEpisodePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>details-episode</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>  
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <p *ngIf='detailEpisode.Poster !== undefined' text-center>
+              <img alt="{{detailEpisode.Title}}" src="{{detailEpisode.Poster}}" >
+          </p>
+        </ion-col>
+        <ion-col col-6>
+          <div>
+              <p *ngIf='detailEpisode.Runtime !== undefined'><b>Titre de l'épisode :</b> {{detailEpisode.Title}}</p>
+              <p *ngIf='detailEpisode.Runtime !== undefined'><b>Durée :</b> {{detailEpisode.Runtime}}</p>
+              <p *ngIf='detailEpisode.Genre !== undefined'><b>Genre :</b> {{detailEpisode.Genre}}</p>
+              <p *ngIf='detailEpisode.Country !== undefined'><b>Country :</b> {{detailEpisode.Country}}</p>
+              <p *ngIf='detailEpisode.Language !== undefined'><b>Language :</b> {{detailEpisode.Language}}</p>
+              <p *ngIf='detailEpisode.DVD !== undefined'><b>DVD :</b> {{detailEpisode.DVD}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+        
+
+        <p *ngIf='detailEpisode.Actors !== undefined'><b>Actors :</b> {{detailEpisode.Actors}}</p>
+        <p *ngIf='detailEpisode.Director !== undefined'><b>Director :</b> {{detailEpisode.Director}}</p>
+        <p *ngIf='detailEpisode.Awards !== undefined'><b>Awards :</b> {{detailEpisode.Awards}}</p>
+        <p *ngIf='detailEpisode.Production !== undefined'><b>Production :</b> {{detailEpisode.Production}}</p>
+        <p *ngIf='detailEpisode.Writer !== undefined'><b>Writer :</b> {{detailEpisode.Writer}}</p>
+        <p *ngIf='detailEpisode.BoxOffice !== undefined'><b>BoxOffice :</b> {{detailEpisode.BoxOffice}}</p>
+        <p *ngIf='detailEpisode.Plot !== undefined'><b>Résumé :</b> {{detailEpisode.Plot}}</p>
+        <br>
+        <a *ngIf='detailEpisode.Website !== undefined' href='{{detailEpisode.Website}}' target='_blank'>Liens vers le site</a>
+
+  </ion-content>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { CallApiProvider } from '../../providers/connexion-api/connexion-api';
-import { ItemDetailsPage } from '../details-film/details-film';
+import { DetailsSeriePage } from '../details-serie/details-serie';
 
 /**
  * Generated class for the SeriePage page.
@@ -21,6 +21,7 @@ export class Serie {
   public position: any;
   searchTerm : any="";
   toggled: boolean;
+  noResult = true;
 
   constructor(public navCtrl: NavController, public callApiProvider: CallApiProvider){
     this.toggled = false;
@@ -31,13 +32,20 @@ export class Serie {
   }
 
   itemTapped(event, item){
-    this.navCtrl.push(ItemDetailsPage, {
+    this.navCtrl.push(DetailsSeriePage, {
       item: item
     });
   }
 
   initializeItems() {
     this.callApiProvider.loadSerie(this.searchTerm).subscribe(result => {
+
+      if (!result || result['Response'] === 'False') {
+        this.noResult = false;
+      }
+      else {
+        this.noResult = true;
+      }
       this.data = result;
     })
   }

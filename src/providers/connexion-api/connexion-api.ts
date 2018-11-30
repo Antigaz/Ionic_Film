@@ -42,7 +42,6 @@ export class CallApiProvider {
     this.url = 'http://www.omdbapi.com/?apikey=551f90f9&i=' + imdbID + '&plot=full';
     return this.http.get(this.url).pipe(
       map(results => {
-        console.log(results);
         return results
       })
     );
@@ -52,10 +51,31 @@ export class CallApiProvider {
     this.url = 'http://www.omdbapi.com/?apikey=551f90f9&i=' + imdbID;
     return this.http.get(this.url).pipe(
       map(results => {
-        console.log(results);
         return results
       })
     );
+  }
+
+  getDetailSaison(idSerie,indexSaison) {
+    this.url = 'http://www.omdbapi.com/?apikey=551f90f9&i='+idSerie+'&Season='+indexSaison;
+    return this.http.get(this.url).pipe(
+      map(results => {
+        return results
+      })
+    );    
+
+  }
+
+  getDetailEpisode(idEpisode) {
+    this.url = 'http://www.omdbapi.com/?apikey=551f90f9&i='+idEpisode;
+    return this.http.get(this.url).pipe(
+      map(results => {
+        console.log(results);
+        console.log(this.url);
+        return results
+      })
+    );    
+
   }
 
 }

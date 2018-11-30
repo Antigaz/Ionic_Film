@@ -18,6 +18,7 @@ export class Film {
   private Film;
   private FilmPage = this.FilmPage;
   private Favoris;
+  noResult = true;
 
   constructor(public navCtrl: NavController, public callApiProvider: CallApiProvider){
     this.toggled = false;
@@ -43,6 +44,14 @@ export class Film {
 
   initializeItems() {
     this.callApiProvider.load(this.searchTerm).subscribe(result => {
+      
+      if (!result || result['Response'] === 'False') {
+        this.noResult = false;
+      }
+      else {
+        this.noResult = true;
+      }
+      console.log(this.noResult);
       this.data = result;
     })
   }

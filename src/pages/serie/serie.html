@@ -13,13 +13,17 @@
 
 
 <ion-content class="card-background-page grid">
-    <ion-row>
+    <ion-row *ngIf="noResult">
       <ion-col col-12 col-md-3 *ngFor="let d of data">
-          <ion-card (click)="itemTapped($event, d)">
-              <img src="{{d.Poster}}" alt="">
-              <div class="card-title">{{d.Title}}</div>
-              <div class="card-subtitle">{{d.Year}}</div>
-          </ion-card>
+        <ion-card (click)="itemTapped($event, d)">
+          <img src="{{d.Poster}}" alt="">
+          <div class="card-title">{{d.Title}}</div>
+          <div class="card-subtitle">{{d.Year}}</div>
+        </ion-card>
       </ion-col>
     </ion-row>
+    <ion-row *ngIf="!noResult">
+      <img height="280px" src="https://cdn.dribbble.com/users/1554526/screenshots/3399669/no_results_found.png" alt="">
+    </ion-row>
   </ion-content>
+  
