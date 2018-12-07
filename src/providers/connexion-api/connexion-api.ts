@@ -59,9 +59,7 @@ export class CallApiProvider {
   getDetailSaison(idSerie,indexSaison) {
     this.url = 'http://www.omdbapi.com/?apikey=551f90f9&i='+idSerie+'&Season='+indexSaison;
     return this.http.get(this.url).pipe(
-      map(results => {
-        return results
-      })
+      
     );    
 
   }
@@ -70,8 +68,6 @@ export class CallApiProvider {
     this.url = 'http://www.omdbapi.com/?apikey=551f90f9&i='+idEpisode;
     return this.http.get(this.url).pipe(
       map(results => {
-        console.log(results);
-        console.log(this.url);
         return results
       })
     );    

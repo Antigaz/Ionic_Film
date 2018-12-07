@@ -4,6 +4,12 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title *ngIf="selectedItem" >{{selectedItem.Title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button color="white" (click)="favorite(selectedItem.imdbID)">
+        <ion-icon name="heart"  *ngIf="isFavorite" color='danger' ></ion-icon>
+        <ion-icon name="heart"  *ngIf="!isFavorite" ></ion-icon>
+      </button>
+  </ion-buttons>
   </ion-navbar>
 </ion-header>
 

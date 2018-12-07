@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { Film } from '../pages/home/home';
 import { ItemDetailsPage } from '../pages/details-film/details-film';
@@ -27,12 +28,14 @@ import { DetailsSaisonPage } from '../pages/details-saison/details-saison';
     FavoritePage,
     DetailsSeriePage,
     DetailsEpisodePage,
-    DetailsSaisonPage
+    DetailsSaisonPage,
+    FavoritePage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

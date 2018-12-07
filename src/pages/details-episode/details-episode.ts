@@ -23,8 +23,4 @@ export class DetailsEpisodePage {
     this.indexEpisode= navParams.get('indexEpisode');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EpisodeDetailPage');
-  }
-
 }

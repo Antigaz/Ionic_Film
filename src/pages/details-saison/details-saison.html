@@ -14,8 +14,8 @@
 
 
 <ion-content padding>
-  <ion-list  *ngFor="let detail of detailSaison; index as i">
-    <div ion-item (click)="episodeTapped(selectedItem.imdbID, i)"> 
+  <ion-list  *ngFor="let detail of episodes; index as i">
+    <div ion-item (click)="episodeTapped(detail.imdbID, i)"> 
         <p>Episode {{i+1}} : {{detail.Title}}</p>
     </div>
   </ion-list>

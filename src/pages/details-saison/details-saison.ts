@@ -26,13 +26,13 @@ export class DetailsSaisonPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public callApiProvider: CallApiProvider) {
 
-    this.selectedItem = navParams.get('item');
+    // this.selectedItem = navParams.get('item');
+    this.idSerie = navParams.get('id');
+    this.indexSaison = navParams.get('indexSaison');
     // this.detailSaison = this.detailSaison.Episodes;
 
-    this.detailData = callApiProvider.getDetailSaison(this.idSerie, this.indexSaison).subscribe(data => {
-      console.log(this.episodes);
-      this.episodes = Array(parseInt(data['Episodes']));
-      this.selectedItem = data;
+    callApiProvider.getDetailSaison(this.idSerie, this.indexSaison).subscribe(data => {
+      this.episodes = data['Episodes'];
     });
   }
   

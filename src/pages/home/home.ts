@@ -29,7 +29,6 @@ export class Film {
 
   openPage(p) {
     this.navCtrl.push(p);
-    console.log(p);
   }
 
   toggleSearch() {
@@ -51,7 +50,6 @@ export class Film {
       else {
         this.noResult = true;
       }
-      console.log(this.noResult);
       this.data = result;
     })
   }

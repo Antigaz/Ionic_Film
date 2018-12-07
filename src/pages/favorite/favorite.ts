@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the FavoritePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { CallApiProvider } from '../../providers/connexion-api/connexion-api';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -15,11 +10,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FavoritePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  favoriteId = [];
+  favoriteMovies = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public CallApiProvider : CallApiProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FavoritePage');
+  ionViewDidEnter() {
+    this.storage.get('Favorite').then((state) => {
+        this.favoriteId = state;
+        this.favoriteMovies = [];
+        this.favoriteId.forEach(element => {
+          this.CallApiProvider.searchMovies(element).subscribe(data => {
+            this.favoriteMovies.push(data);
+          })
+        });
+    });
   }
-
 }

@@ -27,9 +27,6 @@ export class DetailsSeriePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public callApiProvider: CallApiProvider) {
 
     this.selectedItem = navParams.get('item');
-    // this.detailData = callApiProvider.getDetailSaison(this.idSerie, this.indexSaison).subscribe(data => {
-    //   console.log(this.saisons);
-    // });
 
     this.callApiProvider.searchItemById(this.navParams.get('item').imdbID).subscribe((movie) => {
       this.selectedItem = movie;
@@ -40,12 +37,12 @@ export class DetailsSeriePage {
   saisonTapped(idSerie, IndexSaison) {
     this.indexSaison = IndexSaison + 1;
 
-    this.callApiProvider.getDetailSaison(idSerie, this.indexSaison).subscribe(data => {
+    // this.callApiProvider.getDetailSaison(idSerie, this.indexSaison).subscribe(data => {
       this.navCtrl.push(DetailsSaisonPage, {
-        detailSaison: data,
+        id: idSerie,
         indexSaison: this.indexSaison,
       });
-    });
+    // });
   }
 
 }
