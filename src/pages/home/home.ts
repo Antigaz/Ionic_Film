@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CallApiProvider } from '../../providers/connexion-api/connexion-api';
 import { NavController } from 'ionic-angular';
 import { ItemDetailsPage } from '../details-film/details-film';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -20,7 +21,7 @@ export class Film {
   private Favoris;
   noResult = true;
 
-  constructor(public navCtrl: NavController, public callApiProvider: CallApiProvider){
+  constructor(public navCtrl: NavController, public callApiProvider: CallApiProvider, public alertCtrl: AlertController){
     this.toggled = false;
     this.Film = Film;
     this.Favoris = this.Favoris;
