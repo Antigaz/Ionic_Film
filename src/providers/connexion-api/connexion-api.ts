@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/Rx';
 import { map } from 'rxjs/operators';
+import { AndroidPermissions } from "@ionic-native/android-permissions";
+import { File } from "@ionic-native/file";
+import { AlertController } from 'ionic-angular';
 
 
 /*
@@ -17,8 +20,9 @@ export class CallApiProvider {
   items: Array<{ title: string, note: string, icon: string }>;
   url;
   apiKey: '551f90f9';
+  private poster_url: string = "http://img.omdbapi.com/?apikey=551f90f9";
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public file: File, private androidPermissions: AndroidPermissions, public alertCtrl: AlertController) {
 
   }
 
@@ -72,6 +76,47 @@ export class CallApiProvider {
       })
     );    
 
+  }
+
+  getAndWritePoster(movie_id: string) {
+    this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE)
+      .then(status => {
+        if (status.hasPermission) {
+          this.http.get(this.poster_url + "&i=" + movie_id + "&h=2048", {responseType: 'arraybuffer'}).toPromise()
+            .then(data => {
+              return this.file.writeFile(
+                this.file.externalRootDirectory + "/Download/",
+                movie_id + ".jpeg",
+                data,
+                {replace: true}
+              );
+            }).catch(err=>console.log(err));
+        } else {
+          this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE)
+            .then(status => {
+              if (status.hasPermission) {
+                this.http.get(this.poster_url + "&i=" + movie_id + "&h=2048", {responseType: 'arraybuffer'}).toPromise()
+                  .then(data => {
+                    return this.file.writeFile(
+                      this.file.externalRootDirectory + "/Download/",
+                      movie_id + ".jpeg",
+                      data,
+                      {replace: true}
+                    );
+                  }).catch(err=>console.log(err));
+              }
+            });
+        }
+      });
+  }
+
+  showAlertDownload() {
+    const alert = this.alertCtrl.create({
+      title: 'Image téléchargé dans vos fichier Download !',
+      subTitle: '',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

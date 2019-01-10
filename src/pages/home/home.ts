@@ -24,7 +24,6 @@ export class Film {
     this.toggled = false;
     this.Film = Film;
     this.Favoris = this.Favoris;
-
   }
 
   openPage(p) {

@@ -17,6 +17,12 @@ import { FavoritePage } from '../pages/favorite/favorite';
 import { DetailsSeriePage } from '../pages/details-serie/details-serie';
 import { DetailsEpisodePage } from '../pages/details-episode/details-episode';
 import { DetailsSaisonPage } from '../pages/details-saison/details-saison';
+import { FavoriteProvider } from '../providers/favorite/favorite';
+import { ExportProvider } from '../providers/export/export';
+import { AndroidPermissions } from "@ionic-native/android-permissions";
+import { File } from '@ionic-native/file';
+import { FileChooser } from "@ionic-native/file-chooser";
+import { FilePath } from "@ionic-native/file-path";
 
 @NgModule({
   declarations: [
@@ -53,7 +59,14 @@ import { DetailsSaisonPage } from '../pages/details-saison/details-saison';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CallApiProvider
+    CallApiProvider,
+    FavoriteProvider,
+    ExportProvider,
+    File,
+    FileChooser,
+    ExportProvider,
+    AndroidPermissions,
+    FilePath
   ]
 })
 export class AppModule {}
