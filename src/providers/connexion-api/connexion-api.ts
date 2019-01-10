@@ -19,7 +19,6 @@ export class CallApiProvider {
   icons: string[];
   items: Array<{ title: string, note: string, icon: string }>;
   url;
-  apiKey: '551f90f9';
   private poster_url: string = "http://img.omdbapi.com/?apikey=551f90f9";
 
   constructor(public http: HttpClient, public file: File, private androidPermissions: AndroidPermissions, public alertCtrl: AlertController) {
